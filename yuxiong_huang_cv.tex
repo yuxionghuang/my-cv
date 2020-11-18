@@ -1,0 +1,346 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A clean template for an academic CV
+%
+% Uses tabularx to create two column entries (date and job/edu/citation).
+% Defines commands to make adding entries simpler.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper]{article}
+
+% Useful aliases
+\newcommand{\XJTUIPSR}{Institute of Power Systems and Its Resilience}
+\newcommand{\XJTUEE}{School of Electrical Engineering}
+\newcommand{\XJTU}{Xi'an Jiaotong University}
+
+% Identifying information
+\newcommand{\Title}{Curriculum Vit\ae}
+\newcommand{\FirstName}{Yuxiong}
+\newcommand{\LastName}{Huang}
+\newcommand{\Initials}{Y}
+\newcommand{\MyName}{\FirstName\ \LastName}
+\newcommand{\Me}{\textbf{\LastName\ \Initials}}  % For citations
+\newcommand{\Email}{hyx.xj@stu.xjtu.edu.cn}
+\newcommand{\Phone}{0086-18392887980}
+%\newcommand{\Website}{leouieda.com}
+%\newcommand{\Lab}{compgeolab.org}
+\newcommand{\ORCID}{0000-0002-8644-8353}
+\newcommand{\Affiliation}{\XJTUEE \\ \XJTU}
+\newcommand{\Address}{
+  28 Xianning West Road, Beilin District \\ Xi'an, Shaanxi, China
+}
+
+% Names for citing coauthors
+\newcommand{\LGF}{Li G}
+\newcommand{\BZH}{Bie Z}
+\newcommand{\DT}{Ding T}
+\newcommand{\AJK}{AN J}
+\newcommand{\SSY}{Sun S}
+\newcommand{\QQR}{Qiu Q}
+\newcommand{\GXS}{Gao X}
+\newcommand{\PYM}{Peng Y}
+\newcommand{\LYX}{Lei Y}
+\newcommand{\HGC}{Huang G}
+\newcommand{\LYL}{Lin Y}
+\newcommand{\WJS}{Wang J}
+\newcommand{\JJF}{Jiang J}
+\newcommand{\MATTIA}{Bettinelli M}
+\newcommand{\ENRICO}{Ragaini E}
+\newcommand{\KY}{Kou Y}
+
+
+% Template configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Disable hyphenation
+\usepackage[none]{hyphenat}
+
+% Control the font size
+\usepackage{anyfontsize}
+
+% Template variables for styling
+\newcommand{\TablePad}{\vspace{-0.4cm}}
+\newcommand{\SoftwareTitle}[1]{{\bfseries #1}}
+\newcommand{\TableTitle}[1]{{\fontsize{12pt}{0}\selectfont \itshape #1}}
+\newcommand{\Invited}{\textbf{[Invited]}}
+
+% For fancy and multipage tables
+\usepackage{tabularx}
+\usepackage{ltablex}
+
+% Define a new environment to place all CV entries in a 2-column table.
+% Left column are the dates, right column the entries.
+\usepackage{environ}
+\NewEnviron{EntriesTable}{
+\TablePad
+\begin{tabularx}{\textwidth}{@{}p{0.1\textwidth}@{\hspace{0.02\textwidth}}p{0.88\textwidth}@{}}
+  \BODY
+\end{tabularx}
+}
+
+% Macros to add links
+\newcommand{\DOI}[1]{doi:\href{https://doi.org/#1}{#1}}
+\newcommand{\Preprint}[1]{preprint: \href{https://doi.org/#1}{doi.org/#1}}
+\newcommand{\Youtube}[1]{recording: \href{https://youtu.be/#1}{youtu.be/#1}}
+
+% Tags to mark publications
+%\newcommand{\OA}{{\bfseries [open access]}}
+\newcommand{\OA}{}
+
+% Macros to set the year and duration on the left column
+\newcommand{\Duration}[2]{\fontsize{10pt}{0}\selectfont #1--#2}
+\newcommand{\Year}[1]{\fontsize{10pt}{0}\selectfont #1}
+\newcommand{\Ongoing}{}
+%\newcommand{\Ongoing}{$\ast$}
+\newcommand{\Future}{future}
+\newcommand{\Review}{in review}
+\newcommand{\Accepted}{accepted}
+\newcommand{\Appointment}[4]{\textbf{#1} \newline #2 \newline #3 \newline #4}
+
+% Define command to insert month name and year as date
+\usepackage{datetime}
+\newdateformat{monthyear}{\monthname[\THEMONTH], \THEYEAR}
+
+% Set the page margins
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+
+% No indentation
+\setlength\parindent{0cm}
+
+% Increase the line spacing
+\renewcommand{\baselinestretch}{1.1}
+% and the spacing between rows in tables
+\renewcommand{\arraystretch}{1.5}
+
+% Remove space between items in itemize and enumerate
+\usepackage{enumitem}
+\setlist{nosep}
+
+% Use custom colors
+\usepackage[usenames,dvipsnames]{xcolor}
+
+% Set fonts. Requires compilation with xelatex
+\usepackage{fontspec}  % required to make older xelatex compile with UTF8
+
+% Configure the font style for sections
+\usepackage{sectsty}
+\sectionfont{\vspace{0.5cm}\bfseries\fontsize{12pt}{0}\selectfont\uppercase}
+\subsectionfont{\vspace{0.2cm}\mdseries\fontsize{12pt}{0}\selectfont\uppercase}
+
+% Set the spacing for sections
+%\usepackage{titlesec}
+%\titlespacing{\section}{0pt}{0cm}{0.3cm}
+%\titlespacing{\subsection}{0pt}{0.3cm}{0.3cm}
+
+% Disable number of sections. Use this instead of "section*" so that the sections still
+% appear as PDF bookmarks. Otherwise, would have to add the table of contents entries
+% manually.
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+% Set fancy headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\chead{
+  \fontsize{10pt}{12pt}\selectfont
+  \MyName
+  \hspace{0.2cm} -- \hspace{0.2cm}
+  \Title
+  \hspace{0.2cm} -- \hspace{0.2cm}
+  \monthyear\today
+}
+\rhead{}
+\cfoot{\fontsize{10pt}{0}\selectfont \thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% Metadata for the PDF output and control of hyperlinks
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{
+  pdftitle={\MyName\ - \Title},
+  pdfauthor={\MyName},
+  linkcolor=blue,
+  citecolor=blue,
+  filecolor=black,
+  urlcolor=MidnightBlue
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+% No header for the first page
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HEADER
+{\fontsize{24pt}{0}\selectfont\MyName}\\[-0.1cm]
+\rule{\textwidth}{0.2pt}
+\begin{minipage}[t]{0.595\textwidth}
+  \Affiliation
+  \\
+  \Address
+\end{minipage}
+\begin{minipage}[t]{0.405\textwidth}
+  \begin{flushright}
+  Last updated: \monthyear\today
+  \\
+    Phone: \Phone
+    \\
+    ORCID: \href{https://orcid.org/\ORCID}{\ORCID}
+    \\
+    Email: \href{mailto:\Email}{\Email}
+    
+%    \\
+%    Research group: \href{https://www.\Lab}{\Lab}
+%    \\
+%    Website: \href{https://www.\Website}{\Website}
+  \end{flushright}
+\end{minipage}
+
+
+\section{Education}
+
+\begin{EntriesTable}
+  \Duration{2017}{}  &
+  PhD in Electrical Engineering, \XJTU, China
+  \\
+  \Duration{2013}{2017}  &
+  BSc in Electrical Engineering, \XJTU, China
+\end{EntriesTable}
+
+
+\section{Research Area}
+Three key words can be used to depict my research interests: reliability/resilience evaluation, integrated energy systems, and machine learning applications. At present, I am trying to use machine learning techniques (especially deep learning and reinforcement learning) to improve the efficiency and feasibility of reliability/resilience evaluation in complicated systems. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Publications}
+%I only list the papers I personally wrote with the guidance of my supervisor Gengfeng Li.
+Notably, I only list the papers I wrote personally, and Gengfeng Li is my supervisor.
+%\subsection{Preprints}
+%
+%\begin{EntriesTable}
+%
+%\end{EntriesTable}
+
+\subsection{Peer-Reviewed}
+
+\begin{EntriesTable}
+%\Year{\Review}  &
+\Year{2020}  &
+\LGF, \Me, \BZH, \DT.
+Machine-learning-based reliability evaluation framework for power distribution networks.
+\emph{IET Generation, Transmission \& Distribution}. 
+\DOI{10.1049/iet-gtd.2019.1520}.
+\OA
+\\
+\Year{2019}  &
+\LGF, \Me, \BZH, \AJK, \SSY, \QQR, \GXS, \PYM, \LYX.
+Review and prospect of operational reliability evaluation of integrated energy system
+\emph{Electric Power Automation Equipment}.
+\DOI{10.16081/j.epae.201908040}.
+%\\
+%\Year{2019}  &
+%\LGF, \HGC, \BZH, \LYL, \Me.
+%Component importance assessment of power systems for improving resilience under wind storms.
+%\emph{Journal of Modern Power Systems and Clean Energy}.
+%\DOI{10.1007/s40565-019-0563-0}.
+%\\
+%\Year{2019}  &
+%\LYX, \LGF, \Me, \BZH.
+%Support vector machine based fast Monte Carlo reliability evaluation method for composite power system.
+%\emph{Telecommunications Science}.
+%\DOI{10.11959/j.issn.1000-0801.2019155}.
+\\
+\Year{2018}  &
+\LGF, \Me, \BZH.
+Reliability evaluation of smart distribution systems considering load rebound characteristics.
+\emph{IEEE Transactions on Sustainable Energy}.
+\DOI{10.1109/TSTE.2018.2810220}.
+\\
+\Year{2017}  &
+\Me, \LGF, \BZH, \KY, \JJF.
+Reliability evaluation of distributed integrated energy systems.
+\emph{Smart Power}.
+\DOI{10.3969/j.issn.1673-7598.2017.07.008}.
+\end{EntriesTable}
+
+
+\subsection{Peer-Reviewed Conference proceedings}
+
+\begin{EntriesTable}
+\Year{2018}  &
+\Me, \LGF, \BZH, \JJF.
+Interaction strategy of user side storage devices for the day-ahead dispatch of distributed integrated energy systems.
+\emph{2018 China International Conference on Electricity Distribution (CICED)}.
+\DOI{10.1109/CICED.2018.8592364}
+\\
+\Year{2017}  &
+\Me, \LGF.
+Reliability evaluation of distributed integrated energy systems via Markov chain Monte Carlo.
+\emph{2017 IEEE Conference on Energy Internet and Energy System Integration (EI2)}.
+\DOI{10.1109/EI2.2017.8245412}.
+%\\
+%\Year{2017}  &
+%\MATTIA, \ENRICO, \Me, \LGF.
+%Monte Carlo simulation and hardware-in-the-loop testing for evaluation of reliability of integrated energy systems.
+%\emph{2017 IEEE International Conference on Environment and Electrical Engineering and 2017 IEEE Industrial and Commercial Power Systems Europe (EEEIC / I\&CPS Europe)}.
+%\DOI{10.1109/EEEIC.2017.7977872}.
+\end{EntriesTable}
+
+
+\section{Awards \& Honours}
+
+\begin{EntriesTable}
+	%2018,研究生国家奖学金（￥20,000）
+	%2016,特高压奖学金（￥10,000）
+	%2018,研究生数学建模竞赛全国二等奖（队长）
+	%2016,节能减排竞赛全国二等奖（队长）
+	\Year{2018}  &
+	National Scholarship for Postgraduate students. Award ID: 2018.14283. Amount: 20,000 CNY.
+	\\
+	\Year{2018}  &
+	National Second Prize of "HUAWEI Cup" The 15th China Post-Graduate Mathematical Contest in Modelling. Award ID: B2018200628.
+	\\
+	\Year{2016}  &
+	UHV (Ultra High Voltage) Scholarship. Amount: 10,000 CNY.
+	\\
+	\Year{2016}  &
+	National Second Prize of The 9th National University Student Social Practice and Science Contest on Energy Saving \& Emission Reduction. Award ID: 2016A-B-019.
+\end{EntriesTable}
+
+
+\section{Projects} 
+Notably, I participate in the following projects as a PhD student, not the project leader.
+% 2016-2020 5.5
+% 2016-2020 3.1
+% 2017-2019 青年基金
+% 2020- 面上项目
+% 2018-2020 T/CEC 能源互联网专项标准
+\begin{EntriesTable}
+	\Duration{2020}{}  &
+	Researches on model-data hybrid driven operational reliability
+	evaluation of integrated energy systems. National Natural Science Foundation of China (Grant No. 51977168). 01/2020.01-12/2023.
+	\\
+	\Duration{2017}{2019}  &
+	Researches on the model and algorithm of reliability evaluation for integrated energy system. National Natural Science Foundation of China (Grant No.51607136). 01/2017-12/2019.
+	\\
+	\Duration{2016}{2020}  &
+	Basic theory for the planning, operation and markets of Energy Internet. National Key Research and Development Program of China (Grant No. 2016YFB0901900). 06/2016-06/2020.
+\end{EntriesTable}
+
+
+\section{Technical skills}
+
+\TablePad
+\begin{tabularx}{\textwidth}{@{}p{0.15\textwidth} p{0.85\textwidth}@{}}
+  Languages & Chinese, English (preparing for the TOEFL test)
+  \\
+  Programming & Python, C/C++, Matlab, LaTeX
+  \\
+  Tools & TensorFlow, PyTorch, CVX, Gorubi, OpenDSS
+\end{tabularx}
+
+\end{document}
