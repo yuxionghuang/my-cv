@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/W32TeX)  (format=lualatex 2020.11.7)  18 NOV 2020 11:01
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/W32TeX)  (format=lualatex 2020.11.7)  18 NOV 2020 21:17
  restricted system commands enabled.
 **yuxiong_huang_cv.tex
 (./yuxiong_huang_cv.tex
@@ -711,7 +711,7 @@ Here is how much of LuaTeX's memory you used:
  446 words of node memory still in use:
    3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 4 attribute, 56 glue_spec,
  4 attribute_list, 1 write nodes
-   avail lists: 1:2,2:535,3:171,4:31,5:203,6:53,7:4501,8:21,9:286,10:7,11:402
+   avail lists: 1:1,2:535,3:171,4:31,5:203,6:53,7:4502,8:21,9:286,10:7,11:402
  31297 multiletter control sequences out of 65536+600000
  45 fonts using 4280275 bytes
  44i,11n,45p,1055b,511s stack positions out of 5000i,500n,10000p,200000b,100000s
@@ -723,7 +723,7 @@ xmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf><d:/Program Files (x86)/tex
 live/2020/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><d:/Program 
 Files (x86)/texlive/2020/texmf-dist/fonts/opentype/public/lm/lmroman17-regular.o
 tf>
-Output written on yuxiong_huang_cv.pdf (2 pages, 34571 bytes).
+Output written on yuxiong_huang_cv.pdf (2 pages, 34564 bytes).
 
 PDF statistics: 120 PDF objects out of 1000 (max. 8388607)
  85 compressed objects within 1 object stream
